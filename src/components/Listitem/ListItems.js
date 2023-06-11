@@ -1,5 +1,3 @@
-// import i from "./../../public/assets/images.jpeg";
-import AddtoCart from "./../../asset/a1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
