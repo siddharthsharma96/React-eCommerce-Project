@@ -1,3 +1,6 @@
+body {
+  font-family: sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -105,6 +108,7 @@ header {
   justify-content: space-around;
   padding: 0 10px;
   background-color: grey;
+  margin-bottom: 0;
 }
 
 .logo {
@@ -159,4 +163,39 @@ header {
   padding: 2px 6px;
   border-radius: 50%;
   font-size: 12px;
+}
+/* Subheader code */
+.subHeader {
+  margin-top: 0;
+  padding: 0 1px;
+  /* border: 2px red solid; */
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1);
+  /* display: flex; */
+}
+.subHeader-List {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style: none;
+  display: flex;
+  text-decoration: none;
+}
+.subheader-Listitem {
+  padding: 0.75rem;
+  letter-spacing: 0.75px;
+  /* border: 2px solid black; */
+}
+.Active {
+  background-color: rgb(224, 107, 29);
+}
+.subHeader-Listitem:link,
+.subHeader-Listitem:visited {
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.subheader-Listitem:hover {
+  background-color: rgb(224, 107, 29);
 }
