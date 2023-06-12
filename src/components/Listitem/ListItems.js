@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-const ListItem = ({ data }) => {
+const ListItem = ({ data, updateTitle }) => {
   // console.log({ data });
   // console.log(data.price);
 
@@ -39,6 +39,7 @@ const ListItem = ({ data }) => {
         </div>
         {/* <p className="cartMsg">{message}</p> */}
       </div>
+      <button onClick={() => updateTitle(data.id)}>update title</button>
       {counter < 1 ? (
         <button className="List-item-button" onClick={increaseCounter}>
           <span>add to cart</span>

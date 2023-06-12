@@ -1,0 +1,53 @@
+{
+  "items": [
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 1",
+      "discountedPrice": 300,
+      "price": 500,
+      "thumbnail": "download.png"
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 2",
+      "discountedPrice": 350,
+      "price": 400,
+      "thumbnail": "download.png"
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 3",
+      "discountedPrice": 250,
+      "price": 600,
+      "thumbnail": "download.png"
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 4",
+      "discountedPrice": 200,
+      "price": 750,
+      "thumbnail": "download.png"
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 5",
+      "discountedPrice": 300,
+      "price": 500,
+      "thumbnail": "download.png"
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 3",
+      "discountedPrice": 250,
+      "price": 600,
+      "thumbnail": "download.png"
+    },
+    {
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, ut ultricies arcu turpis eu elit.",
+      "title": "Title of this item 4",
+      "discountedPrice": 200,
+      "price": 750,
+      "thumbnail": "download.png"
+    }
+  ]
+}
