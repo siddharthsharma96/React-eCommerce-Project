@@ -75,6 +75,14 @@ strike {
   margin-left: 5rem;
   margin-top: 2rem;
   flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.form {
+  margin: 0 4rem;
+}
+.input-field label {
+  display: block;
+  margin: 10px 0;
 }
 .list-title {
   padding: 16px 8px;
@@ -100,7 +108,12 @@ strike {
   cursor: pointer;
   background-color: rgb(224, 107, 29);
 }
-/* Example CSS for Header component */
+.cartMsg {
+  color: red;
+  font-size: 0.5rem;
+  letter-spacing: 1px;
+}
+/* CSS for Header component */
 
 header {
   display: flex;
