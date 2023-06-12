@@ -212,3 +212,19 @@ header {
 .subheader-Listitem:hover {
   background-color: rgb(224, 107, 29);
 }
+.hidden {
+  display: none;
+}
+.add-items {
+  display: flex;
+  height: 25px;
+  /* flex-direction: row; */
+  justify-content: space-between;
+  align-items: center;
+}
+.add-items button {
+  height: 25px;
+  width: 35px;
+  border: none;
+  background-color: rgb(224, 107, 29);
+}

@@ -4,13 +4,24 @@ import { useState } from "react";
 const ListItem = ({ data }) => {
   // console.log({ data });
   // console.log(data.price);
-  const [message, setMessage] = useState("You haven't added this item in cart");
-  const clicked = () => {
-    console.log("msg ", data);
-    console.log(message);
-    setMessage("cart added");
-    console.log(message);
+
+  const [counter, setCounter] = useState(0);
+  // const [message, setMessage] = useState("You haven't added this item in cart");
+  const increaseCounter = () => {
+    setCounter(counter + 1);
   };
+  const decreaseCounter = () => {
+    if (counter === 0) {
+      return;
+    }
+    setCounter(counter - 1);
+  };
+  // const clicked = () => {
+  //   console.log("msg ", data);
+  //   console.log(message);
+  //   setMessage("cart added");
+  //   console.log(message);
+  // };
   return (
     <div className="ListItem-Conatiner">
       <img
@@ -26,13 +37,21 @@ const ListItem = ({ data }) => {
         <div className="list-title">
           <h3>{data.title}</h3>
         </div>
-        <p className="cartMsg">{message}</p>
+        {/* <p className="cartMsg">{message}</p> */}
       </div>
-      <button className="List-item-button" onClick={clicked}>
-        <span>add to cart</span>
-        <FontAwesomeIcon className="Listitem-btn-img" icon={faShoppingCart} />
-        {/* <img className="Listitem-btn-img" src={AddtoCart} alt="kl"></img> */}
-      </button>
+      {counter < 1 ? (
+        <button className="List-item-button" onClick={increaseCounter}>
+          <span>add to cart</span>
+          <FontAwesomeIcon className="Listitem-btn-img" icon={faShoppingCart} />
+          {/* {/* <img className="Listitem-btn-img" src={AddtoCart} alt="kl"></img> * */}
+        </button>
+      ) : (
+        <div className={"add-items"}>
+          <button onClick={decreaseCounter}>-</button>
+          <p>{counter}</p>
+          <button onClick={increaseCounter}>+</button>
+        </div>
+      )}
     </div>
   );
 };
