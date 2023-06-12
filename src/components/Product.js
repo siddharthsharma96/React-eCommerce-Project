@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import ListItem from "./Listitem/ListItems.js";
 import axios from "axios";
+import Loader from "./UI/Loader.js";
 // import Form from "./Layout/Form.js";
 const Product = () => {
+  const [loader, setLoader] = useState(true);
   // const [title, setTitle] = useState("");
   // const [discountedPrice, setDiscountedPrice] = useState(0);
   // const [price, setPrice] = useState(0);
@@ -58,6 +60,8 @@ const Product = () => {
         console.log(transformData);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoader(false);
       }
     };
 
@@ -122,21 +126,25 @@ const Product = () => {
     }
   };
   return (
-    <div className="List-container">
-      {/* <Form
+    <>
+      <div className="List-container">
+        {/* <Form
         item={item}
         onChangeInput={handleEvents}
         onSubmitForm={submitForm}
       ></Form> */}
-      {/* <ListItem data={item}></ListItem> */}
-      {/* <ListItem data={items[1]}></ListItem>
+        {/* <ListItem data={item}></ListItem> */}
+        {/* <ListItem data={items[1]}></ListItem>
       <ListItem data={items[2]}></ListItem> */}
-      {item.map((i) => {
-        return (
-          <ListItem key={i.id} data={i} updateTitle={updateTitle}></ListItem>
-        );
-      })}
-    </div>
+        {item.map((i) => {
+          return (
+            // <ListItem key={i.id} data={i} updateTitle={updateTitle}></ListItem>
+            <ListItem loader={loader} key={i.id} data={i}></ListItem>
+          );
+        })}
+      </div>
+      {loader && <Loader />}
+    </>
   );
 };
 export default Product;

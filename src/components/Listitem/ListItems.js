@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-const ListItem = ({ data, updateTitle }) => {
+const ListItem = ({ data, loader }) => {
   // console.log({ data });
   // console.log(data.price);
 
@@ -23,7 +23,7 @@ const ListItem = ({ data, updateTitle }) => {
   //   console.log(message);
   // };
   return (
-    <div className="ListItem-Conatiner">
+    <div className={loader ? "ListItem-Conatiner-blur" : "ListItem-Conatiner"}>
       <img
         className="listem-Image"
         src="/assets/download.jpeg"
@@ -39,7 +39,7 @@ const ListItem = ({ data, updateTitle }) => {
         </div>
         {/* <p className="cartMsg">{message}</p> */}
       </div>
-      <button onClick={() => updateTitle(data.id)}>update title</button>
+      {/* <button onClick={() => updateTitle(data.id)}>update title</button> */}
       {counter < 1 ? (
         <button className="List-item-button" onClick={increaseCounter}>
           <span>add to cart</span>
