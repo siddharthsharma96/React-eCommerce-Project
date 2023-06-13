@@ -1,8 +1,9 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Cart from "../Cart";
 
-const Header = () => {
+const Header = ({ cartItem, items, onHandleEvent }) => {
   return (
     <header>
       <div className="logo">
@@ -16,12 +17,11 @@ const Header = () => {
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>
-      <div className="cart">
-        {/* Cart icon and value */}
-        {/* <span className="cart-icon">&#128722;</span> */}
-        <FontAwesomeIcon className="cart-icon" icon={faShoppingCart} />
-        <span className="cart-value">3</span>
-      </div>
+      <Cart
+        cartItem={cartItem}
+        items={items}
+        onHandleEvent={onHandleEvent}
+      ></Cart>
     </header>
   );
 };

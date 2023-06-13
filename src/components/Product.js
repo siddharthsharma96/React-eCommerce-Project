@@ -3,8 +3,9 @@ import ListItem from "./Listitem/ListItems.js";
 import axios from "axios";
 import Loader from "./UI/Loader.js";
 // import Form from "./Layout/Form.js";
-const Product = () => {
+const Product = ({ addItemCart, removeItemCart, cartEvent }) => {
   const [loader, setLoader] = useState(true);
+  // const [presentItemCart, setPresentItemCart] = useState([]);
   // const [title, setTitle] = useState("");
   // const [discountedPrice, setDiscountedPrice] = useState(0);
   // const [price, setPrice] = useState(0);
@@ -48,16 +49,17 @@ const Product = () => {
         const response = await axios.get(
           "https://react-ecommerce-61434-default-rtdb.firebaseio.com/items/items.json"
         );
-        console.log(response);
+        // console.log(response);
         const data = response.data;
         const transformData = data.map((item, index) => {
           return {
             ...item,
+            quantity: 0,
             id: index,
           };
         });
         setItem(transformData);
-        console.log(transformData);
+        // console.log(transformData);
       } catch (error) {
         console.log(error);
       } finally {
@@ -67,6 +69,15 @@ const Product = () => {
 
     fetchData();
   }, []);
+  useEffect(() => {
+    if (cartEvent.id > -1) {
+      if (cartEvent.type === 1) {
+        handleAdditemCart(cartEvent.id);
+      } else if (cartEvent.type === -1) {
+        handleRemoveitemCart(cartEvent.id);
+      }
+    }
+  }, [cartEvent]);
   // const handletitle = (event) => {
   //   // setTitle(event.target.value);
   //   setItem({
@@ -110,7 +121,7 @@ const Product = () => {
   //   });
   // };
   const updateTitle = async (itemId) => {
-    console.log(itemId);
+    // console.log(itemId);
     try {
       let title = `update title-${itemId}`;
       await axios.patch(
@@ -125,21 +136,54 @@ const Product = () => {
       console.log(error);
     }
   };
+  const handleAdditemCart = (id) => {
+    // console.log(id);
+    let data = [...item];
+    let index = data.findIndex((i) => i.id === id);
+    data[index].quantity += 1;
+    setItem([...data]);
+    addItemCart(data[index]);
+    //when we are not using db
+    // if (presentItemCart.indexOf(id) > -1) {
+    //   return;
+    // }
+    // setPresentItemCart([...presentItemCart, id]);
+    // addItemCart();
+  };
+  const handleRemoveitemCart = (id) => {
+    // console.log(id);
+    let data = [...item];
+    let index = data.findIndex((i) => i.id === id);
+    if (data[index].quantity !== 0) {
+      data[index].quantity -= 1;
+      setItem([...data]);
+      removeItemCart(data[index]);
+    }
+    //when we are not using db
+    // let index = presentItemCart.indexOf(id);
+    // if (index > -1) {
+    //   let items = [...presentItemCart];
+    //   items.splice(index, 1);
+    //   setPresentItemCart([...items]);
+    //   removeItemCart();
+    // }
+  };
   return (
     <>
       <div className="List-container">
-        {/* <Form
-        item={item}
-        onChangeInput={handleEvents}
-        onSubmitForm={submitForm}
-      ></Form> */}
         {/* <ListItem data={item}></ListItem> */}
         {/* <ListItem data={items[1]}></ListItem>
       <ListItem data={items[2]}></ListItem> */}
         {item.map((i) => {
           return (
             // <ListItem key={i.id} data={i} updateTitle={updateTitle}></ListItem>
-            <ListItem loader={loader} key={i.id} data={i}></ListItem>
+            <ListItem
+              onAdd={handleAdditemCart}
+              onRemove={handleRemoveitemCart}
+              loader={loader}
+              key={i.id}
+              data={i}
+            ></ListItem>
           );
         })}
       </div>
