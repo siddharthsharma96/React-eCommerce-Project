@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Cart from "../Cart";
 
-const Header = ({ cartItem, items, onHandleEvent }) => {
+const Header = ({ cartItem, items, onHandleEvent, handleSearch }) => {
+  const [serachText, setSearchText] = useState("");
+  const handleChange = (e) => {
+    let a = e.target.value;
+    setSearchText(a);
+  };
+  const handleClick = () => {
+    handleSearch(serachText);
+  };
   return (
     <header>
       <div className="logo">
@@ -12,8 +20,12 @@ const Header = ({ cartItem, items, onHandleEvent }) => {
       </div>
       <div className="search-bar">
         {/* Search bar component */}
-        <input type="text" placeholder="Search for any product given below" />
-        <button type="button">
+        <input
+          onChange={handleChange}
+          type="text"
+          placeholder="Search for any product given below"
+        />
+        <button onClick={handleClick} type="button">
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>

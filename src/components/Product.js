@@ -3,8 +3,9 @@ import ListItem from "./Listitem/ListItems.js";
 import axios from "axios";
 import Loader from "./UI/Loader.js";
 // import Form from "./Layout/Form.js";
-const Product = ({ addItemCart, removeItemCart, cartEvent }) => {
+const Product = ({ addItemCart, removeItemCart, cartEvent, search }) => {
   const [loader, setLoader] = useState(true);
+  const [d, setD] = useState([]);
   // const [presentItemCart, setPresentItemCart] = useState([]);
   // const [title, setTitle] = useState("");
   // const [discountedPrice, setDiscountedPrice] = useState(0);
@@ -58,6 +59,7 @@ const Product = ({ addItemCart, removeItemCart, cartEvent }) => {
             id: index,
           };
         });
+        setD(transformData);
         setItem(transformData);
         // console.log(transformData);
       } catch (error) {
@@ -168,6 +170,25 @@ const Product = ({ addItemCart, removeItemCart, cartEvent }) => {
     //   removeItemCart();
     // }
   };
+  let filteredArray = [];
+  if (search !== "") {
+    filteredArray = item.filter((e) => {
+      let afgh = e.title.toLowerCase().includes(search.toLowerCase());
+      return afgh;
+    });
+  } else {
+    filteredArray = d;
+  }
+
+  useEffect(() => {
+    if (search.trim() === "") {
+      // Handle the case when the search value is empty
+      // For example, you can reset the filtered array to the original item array
+      filteredArray = d;
+    }
+    setItem(filteredArray);
+  }, [search]);
+
   return (
     <>
       <div className="List-container">

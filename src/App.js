@@ -7,7 +7,7 @@ import SubHeader from "./components/Layout/SubHeader";
 import { useState } from "react";
 function App() {
   const [cartItem, setCartItem] = useState([]);
-  const [serach, setSearch] = useState("");
+  const [search, setSearch] = useState("");
   const [eventQueue, setEventQueue] = useState({
     id: "",
     type: "",
@@ -40,15 +40,20 @@ function App() {
       type,
     });
   };
+  const handleSearch = (text) => {
+    setSearch(text);
+  };
   return (
     <div>
       <Header
         cartItem={cartItem.length}
         items={cartItem}
         onHandleEvent={handleQueue}
+        handleSearch={handleSearch}
       ></Header>
       <SubHeader></SubHeader>
       <Product
+        search={search}
         addItemCart={addItemCart}
         removeItemCart={removeItemCart}
         cartEvent={eventQueue}
