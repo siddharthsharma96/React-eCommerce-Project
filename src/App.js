@@ -7,6 +7,7 @@ import SubHeader from "./components/Layout/SubHeader";
 import { useState } from "react";
 function App() {
   const [cartItem, setCartItem] = useState([]);
+  const [serach, setSearch] = useState("");
   const [eventQueue, setEventQueue] = useState({
     id: "",
     type: "",
